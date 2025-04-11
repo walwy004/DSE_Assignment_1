@@ -29,6 +29,31 @@ public class Field {
 		// Stores a given item at a given location
 		grid[row][col] = cloneItem(item);
 	}
+	
+	public void till(int row, int col) {
+		// Takes in the location in the field to till and turn into new Soil
+		grid[row][col] = new Soil();
+	}
+	
+	public void tick() {
+		// Calls every Items tick function to increase its age
+		// If an Item is Soil, 20% of the time the location will turn into a new Weed
+		// If an item in the field has died after ageing, it turns into UntilledSoil
+		for (int row = 0; row < height; row++) {
+			for (int col = 0; col < width; col++) {
+				Item item = grid[row][col];
+				item.tick();
+				
+				if (item.died()) {
+					grid[row][col] = new UntilledSoil();
+				} else if (item instanceof Soil) {
+					if (Math.random() < 0.2) {	// 20% chance
+						grid[row][col] = new Weed();
+					}
+				}
+			}
+		}
+	}
 
 	private Item cloneItem(Item item) {
 		if (item instanceof Apples) {
