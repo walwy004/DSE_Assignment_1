@@ -14,7 +14,14 @@ public abstract class Item {
 		this.maturationAge = maturationAge;
 		this.deathAge = deathAge;
         this.value = value;
-        
+	}
+	
+	// Copy constructor
+	public Item(Item other) {
+	    this.age = other.age;
+	    this.maturationAge = other.maturationAge;
+	    this.deathAge = other.deathAge;
+	    this.value = other.value;
 	}
 	
 	public void tick() {

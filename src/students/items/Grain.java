@@ -4,10 +4,14 @@ public class Grain extends Food {
 
 	private static int generationCount = 0;
 
-    public Grain() {
-        super(2, 6, 2);
-        generationCount++;
-    }
+	public Grain() {
+	    super(2, 6, 2);
+	    generationCount++;
+	}
+
+	public Grain(Grain other) {
+	    super(other);
+	}
 
     public static int getGenerationCount() {
         return generationCount;
