@@ -41,11 +41,17 @@ public class Marker {
 //		g.tick();
 //		System.out.println(g.died()); // should print true
 		
-		// Weed testing
-		Weed w = new Weed();
-		System.out.println(w); // should print "#"
-		System.out.println(w.getValue()); // should print 0
-		System.out.println(w.died()); // should print false
+//		// Weed testing
+//		Weed w = new Weed();
+//		System.out.println(w); // should print "#"
+//		System.out.println(w.getValue()); // should print 0
+//		System.out.println(w.died()); // should print false
+		
+		// UntilledSoil testing
+		UntilledSoil us = new UntilledSoil();
+		System.out.println(us); // should print "/"
+		System.out.println(us.getValue()); // should print 0
+		System.out.println(us.died()); // should print false
 		
 
 //		System.out.println(new Weed()); // should print "#"
