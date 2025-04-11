@@ -1,5 +1,7 @@
 package students.items;
 
+import java.util.Objects;
+
 public abstract class Item {
 	
 	private int age;
@@ -13,6 +15,14 @@ public abstract class Item {
 		this.deathAge = deathAge;
         this.value = value;
         
+	}
+	
+	public void tick() {
+		age++;
+	}
+	
+	public boolean died() {
+		return age > deathAge;
 	}
 
 	public int getAge() {
@@ -32,9 +42,32 @@ public abstract class Item {
 	}
 
 	public int getValue() {
-		return value;
+		// for food items, returns their value ONLY if the item’s age is passed it’s maturation age
+		if (age >= maturationAge) {
+			return value;
+		} else {
+			return 0;
+		}
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(age, deathAge, maturationAge, value);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Item other = (Item) obj;
+		return age == other.age && deathAge == other.deathAge && maturationAge == other.maturationAge
+				&& value == other.value;
 	}
 	
-	
+	public abstract String toString();
 	
 }
