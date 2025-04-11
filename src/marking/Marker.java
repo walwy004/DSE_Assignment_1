@@ -28,18 +28,24 @@ public class Marker {
 //		Food testFood = a; //this should be possible
 //		Item testItem = testFood; //this should be possible
 		
-		// Grain testing
-		System.out.println(Grain.getGenerationCount()); // should print 0
-		Grain g = new Grain();
-		System.out.println(Grain.getGenerationCount()); // should print 1
-		System.out.println(g); // should print "g"
-		System.out.println(g.getValue()); // should print 0
-		g.setAge(6);
-		System.out.println(g.getValue()); // should print 2
-		System.out.println(g); // should print "G"
-		System.out.println(g.died()); // should print false
-		g.tick();
-		System.out.println(g.died()); // should print true
+//		// Grain testing
+//		System.out.println(Grain.getGenerationCount()); // should print 0
+//		Grain g = new Grain();
+//		System.out.println(Grain.getGenerationCount()); // should print 1
+//		System.out.println(g); // should print "g"
+//		System.out.println(g.getValue()); // should print 0
+//		g.setAge(6);
+//		System.out.println(g.getValue()); // should print 2
+//		System.out.println(g); // should print "G"
+//		System.out.println(g.died()); // should print false
+//		g.tick();
+//		System.out.println(g.died()); // should print true
+		
+		// Weed testing
+		Weed w = new Weed();
+		System.out.println(w); // should print "#"
+		System.out.println(w.getValue()); // should print 0
+		System.out.println(w.died()); // should print false
 		
 
 //		System.out.println(new Weed()); // should print "#"
