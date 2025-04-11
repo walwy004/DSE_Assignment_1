@@ -13,22 +13,37 @@ public class Marker {
 		//you should NOT be able to make an Item - following line shouldn't compile if uncommented
 		//new Item(0, 0, 0);
 
-		System.out.println(Apples.getGenerationCount()); // should print 0
-		Apples a = new Apples();
-		System.out.println(Apples.getGenerationCount()); // should print 1
-		System.out.println(a); // should print "a"
-		System.out.println(a.getValue()); // should print 0
-		a.setAge(5);
-		System.out.println(a.getValue()); // should print 3
-		System.out.println(a); // should print "A"
-		System.out.println(a.died()); // should print false
-		a.tick();
-		System.out.println(a.died()); // should print true
-		Food testFood = a; //this should be possible
-		Item testItem = testFood; //this should be possible
+		// Apple testing
+//		System.out.println(Apples.getGenerationCount()); // should print 0
+//		Apples a = new Apples();
+//		System.out.println(Apples.getGenerationCount()); // should print 1
+//		System.out.println(a); // should print "a"
+//		System.out.println(a.getValue()); // should print 0
+//		a.setAge(5);
+//		System.out.println(a.getValue()); // should print 3
+//		System.out.println(a); // should print "A"
+//		System.out.println(a.died()); // should print false
+//		a.tick();
+//		System.out.println(a.died()); // should print true
+//		Food testFood = a; //this should be possible
+//		Item testItem = testFood; //this should be possible
+		
+		// Grain testing
+		System.out.println(Grain.getGenerationCount()); // should print 0
+		Grain g = new Grain();
+		System.out.println(Grain.getGenerationCount()); // should print 1
+		System.out.println(g); // should print "g"
+		System.out.println(g.getValue()); // should print 0
+		g.setAge(6);
+		System.out.println(g.getValue()); // should print 2
+		System.out.println(g); // should print "G"
+		System.out.println(g.died()); // should print false
+		g.tick();
+		System.out.println(g.died()); // should print true
+		
 
-		System.out.println(new Weed()); // should print "#"
-		System.out.println(new UntilledSoil()); // should print "/"
+//		System.out.println(new Weed()); // should print "#"
+//		System.out.println(new UntilledSoil()); // should print "/"
 
 		// Section TWO
 		// uncomment this section once you get to it
