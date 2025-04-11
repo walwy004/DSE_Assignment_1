@@ -42,11 +42,10 @@ public class Marker {
 //		System.out.println(g.died()); // should print true
 	
 		
-		System.out.println(new Weed()); // should print "#"
-		System.out.println(new UntilledSoil()); // should print "/"
-		System.out.println(new Soil()); // should print "."
+//		System.out.println(new Weed()); // should print "#"
+//		System.out.println(new UntilledSoil()); // should print "/"
+//		System.out.println(new Soil()); // should print "."
 
-		
 		// Section TWO
 		// uncomment this section once you get to it
 		
