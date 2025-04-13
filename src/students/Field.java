@@ -54,6 +54,76 @@ public class Field {
 			}
 		}
 	}
+	
+	public int getValue() {
+		int total = 0;
+		for (int row = 0; row < height; row++) {
+			for (int col = 0; col < height; col++) {
+				total += grid[row][col].getValue();
+			}
+		}
+		return total;
+	}
+	
+	public String getSummary() {
+		int apples = 0, grains = 0, soil = 0, untilled = 0, weed = 0;
+		int value = 0;
+		
+		for (int row = 0; row < height; row++) {
+			for (int col = 0; col < width; col++) {
+				Item item = grid[row][col];
+				
+				if (item instanceof Apples) {
+					apples++;
+				} else if (item instanceof Grain) {
+					grains++;
+				} else if (item instanceof Soil) {
+	                soil++;
+	            } else if (item instanceof UntilledSoil) {
+	                untilled++;
+	            } else if (item instanceof Weed) {
+	                weed++;
+	            }
+
+	            value += item.getValue();
+			}
+		}
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append(String.format("Apples:        %d\n", apples));
+	    sb.append(String.format("Grain:         %d\n", grains));
+	    sb.append(String.format("Soil:          %d\n", soil));
+	    sb.append(String.format("Untilled:      %d\n", untilled));
+	    sb.append(String.format("Weed:          %d\n", weed));
+	    sb.append(String.format("For a total of $%d\n", value));
+	    sb.append(String.format("Total apples created: %d\n", Apples.getGenerationCount()));
+	    sb.append(String.format("Total grain created: %d\n", Grain.getGenerationCount()));
+
+	    return sb.toString();
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		
+		// Column headers
+		sb.append("  ");
+		for (int col = 1; col <= width; col++) {
+			sb.append(col).append(" ");
+		}
+		sb.append("\n");
+		
+		// Rows with row numbers
+		for (int row = 0; row < height; row++) {
+			sb.append(row + 1).append(" ");
+			for (int col = 0; col < width; col++) {
+				sb.append(grid[row][col].toString()).append(" ");
+			}
+			sb.append("\n");
+		}
+		
+		return sb.toString();
+	}
 
 	private Item cloneItem(Item item) {
 		if (item instanceof Apples) {
