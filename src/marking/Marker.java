@@ -59,10 +59,12 @@ public class Marker {
 		testField.plant(0, 0, a);
 		System.out.println(testField.getValue()); //should print 3
 		System.out.println(a.equals(testField.get(0, 0))); //should print true
+		System.out.println(testField); // should print the field with apple
 		testField.till(0, 0);
 		System.out.println(a.equals(testField.get(0, 0))); //should print false
 		System.out.println(testField.get(0, 0).equals(new Soil())); //should print true
-		System.out.println(testField.getSummary());
+		System.out.println(testField.getSummary()); // should print summary of field
+		System.out.println(testField); // should print empty field
 		
 
 		// Section THREE

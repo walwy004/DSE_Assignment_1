@@ -56,6 +56,7 @@ public class Field {
 	}
 	
 	public int getValue() {
+		// Returns the total monetary value of each item in the field
 		int total = 0;
 		for (int row = 0; row < height; row++) {
 			for (int col = 0; col < height; col++) {
@@ -66,6 +67,7 @@ public class Field {
 	}
 	
 	public String getSummary() {
+		// Returns a string representing the quantities and overall value of the field
 		int apples = 0, grains = 0, soil = 0, untilled = 0, weed = 0;
 		int value = 0;
 		
@@ -104,6 +106,7 @@ public class Field {
 	
 	@Override
 	public String toString() {
+		// Prints out a numbered grid with the contents of each location
 		StringBuilder sb = new StringBuilder();
 		
 		// Column headers
