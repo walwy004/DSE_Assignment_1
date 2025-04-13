@@ -7,10 +7,13 @@ public class Farm {
 	
 	private Field field;
 	private int bankBalance;
+	private Weather weather;
+
 	
 	public Farm(int fieldWidth, int fieldHeight, int startingFunds) {
 		this.field = new Field(fieldHeight, fieldWidth);
 		this.bankBalance = startingFunds;
+		this.weather = new Weather();
 	}
 	
 	public void run() {
@@ -123,6 +126,23 @@ public class Farm {
                     System.out.println("Something went wrong: " + e.getMessage());
                 }
             }
+            
+            /*
+             * === Custom Feature: Weather System ===
+             * On each turn, the WeatherManager determines if a weather event occurs.
+             * - Drought (10%): crops do not age (tick is skipped)
+             * - Flood (10%): all Apples and Grain are wiped out and replaced with UntilledSoil
+             * This feature introduces environmental randomness and challenges the player to plan ahead.
+             */
+            int weatherEvent = weather.getWeatherEvent();
+
+            if (weatherEvent == Weather.FLOOD) {
+                System.out.println("A flood has hit the farm! All crops are lost!");
+                floodField();
+            } else if (weatherEvent == Weather.DROUGHT) {
+                System.out.println("A drought has hit! Crops will not age this turn.");
+                continue; // skip tick()
+            }
 
             // Always tick the field at end of each turn
             field.tick();
@@ -131,5 +151,18 @@ public class Farm {
         System.out.println("Game over!");
         scanner.close();
 	}
+	
+	private void floodField() {
+		// Draws new field after flood hits
+	    for (int row = 0; row < field.getHeight(); row++) {
+	        for (int col = 0; col < field.getWidth(); col++) {
+	            Item item = field.get(row, col);
+	            if (item instanceof Apples || item instanceof Grain) {
+	                field.plant(row, col, new UntilledSoil());
+	            }
+	        }
+	    }
+	}
+
 	
 }
