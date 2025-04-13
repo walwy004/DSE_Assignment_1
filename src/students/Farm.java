@@ -33,6 +33,28 @@ public class Farm {
             // Read input
             String input = scanner.nextLine().trim();
             String[] parts = input.split(" ");
+            
+            // Handle input (build this next)
+            if (parts.length > 0) {
+                String command = parts[0].toLowerCase();
+
+                // Placeholders — implement these next
+                if (command.equals("q")) {
+                    running = false;
+                } else if (command.equals("w")) {
+                    // wait = do nothing except tick
+                } else if (command.equals("s")) {
+                    System.out.println(field.getSummary());
+                } else {
+                    System.out.println("Unknown or incomplete command.");
+                }
+            }
+
+            // Always tick the field at end of each turn
+            field.tick();
+        }
+
+        System.out.println("Game over!");
 	}
 	
 }

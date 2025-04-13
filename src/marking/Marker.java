@@ -49,29 +49,29 @@ public class Marker {
 		// Section TWO
 		// uncomment this section once you get to it
 		
-		Field testField = new Field(5, 5);
-		System.out.println(testField.get(3, 3)); //should print "."
-		System.out.println(testField); //should print the field
-		System.out.println(testField.getValue()); //should print 0
-		Apples a = new Apples();
-		a = new Apples();
-		a.setAge(5);
-		testField.plant(0, 0, a);
-		System.out.println(testField.getValue()); //should print 3
-		System.out.println(a.equals(testField.get(0, 0))); //should print true
-		System.out.println(testField); // should print the field with apple
-		testField.till(0, 0);
-		System.out.println(a.equals(testField.get(0, 0))); //should print false
-		System.out.println(testField.get(0, 0).equals(new Soil())); //should print true
-		System.out.println(testField.getSummary()); // should print summary of field
-		System.out.println(testField); // should print empty field
+//		Field testField = new Field(5, 5);
+//		System.out.println(testField.get(3, 3)); //should print "."
+//		System.out.println(testField); //should print the field
+//		System.out.println(testField.getValue()); //should print 0
+//		Apples a = new Apples();
+//		a = new Apples();
+//		a.setAge(5);
+//		testField.plant(0, 0, a);
+//		System.out.println(testField.getValue()); //should print 3
+//		System.out.println(a.equals(testField.get(0, 0))); //should print true
+//		System.out.println(testField); // should print the field with apple
+//		testField.till(0, 0);
+//		System.out.println(a.equals(testField.get(0, 0))); //should print false
+//		System.out.println(testField.get(0, 0).equals(new Soil())); //should print true
+//		System.out.println(testField.getSummary()); // should print summary of field
+//		System.out.println(testField); // should print empty field
 		
 
 		// Section THREE
 		// uncomment this section once you get to it
 		//remember, your farm should work on varies size fields (assuming all fields are less than 10x10)
-		//Farm f = new Farm(10, 5, 10);
-		//f.run();
+		Farm f = new Farm(10, 5, 10);
+		f.run();
 		
 	}
 
