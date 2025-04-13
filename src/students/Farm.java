@@ -1,13 +1,20 @@
 package students;
 
+import students.items.*;
+import java.util.Scanner;
+
 public class Farm {
 	
-	public Farm(int fieldWidth, int fieldHeight, int startingFunds)
-	{
+	private Field field;
+	private int bankBalance;
+	
+	public Farm(int fieldWidth, int fieldHeight, int startingFunds) {
+		this.field = new Field(fieldHeight, fieldWidth);
+		this.bankBalance = startingFunds;
 	}
 	
-	public void run()
-	{
+	public void run() {
+		
 	}
 	
 }
