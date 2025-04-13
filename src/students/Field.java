@@ -127,6 +127,14 @@ public class Field {
 		
 		return sb.toString();
 	}
+	
+	public int getHeight() {
+	    return height;
+	}
+
+	public int getWidth() {
+	    return width;
+	}
 
 	private Item cloneItem(Item item) {
 		if (item instanceof Apples) {

@@ -34,19 +34,93 @@ public class Farm {
             String input = scanner.nextLine().trim();
             String[] parts = input.split(" ");
             
-            // Handle input (build this next)
+            // Handle input
             if (parts.length > 0) {
                 String command = parts[0].toLowerCase();
 
-                // Placeholders — implement these next
-                if (command.equals("q")) {
-                    running = false;
-                } else if (command.equals("w")) {
-                    // wait = do nothing except tick
-                } else if (command.equals("s")) {
-                    System.out.println(field.getSummary());
-                } else {
-                    System.out.println("Unknown or incomplete command.");
+                try {
+                	// Quit
+                    if (command.equals("q")) {
+                        running = false;
+                    } 
+                    
+                    // Wait
+                    else if (command.equals("w")) {
+                    	// Wait: do nothing except tick 	
+                    } 
+                    
+                    // Field summary
+                    else if (command.equals("s")) {
+                        System.out.println(field.getSummary());
+
+                    } else if ((command.equals("t") || command.equals("h") || command.equals("p")) && parts.length == 3) {
+                    	// Offset of -1 to match with actual grid coordinates
+                        int x = Integer.parseInt(parts[1]) - 1;
+                        int y = Integer.parseInt(parts[2]) - 1;
+
+                        if (x < 0 || x >= field.getWidth() || y < 0 || y >= field.getHeight()) {
+                            System.out.println("Invalid coordinates. Try again.");
+                        } else {
+                        	
+                        	// Till
+                            if (command.equals("t")) {
+                                field.till(y, x); // y = row, x = col
+                            }
+                            
+                            // Harvest
+                            else if (command.equals("h")) {
+                                Item item = field.get(y, x);
+                                int value = item.getValue();
+                                if (value > 0) {
+                                    bankBalance += value;
+                                    field.till(y, x); // harvest = till
+                                    System.out.println("Sold '" + item.toString() + "' for $" + value);
+                                    System.out.println();
+                                } else {
+                                    System.out.println("Item is not harvestable.");
+                                }
+                            }
+                            
+                            // Plant
+                            else if (command.equals("p")) {
+                                Item spot = field.get(y, x);
+                                if (!(spot instanceof Soil)) {
+                                    System.out.println("Can only plant in soil.");
+                                } else {
+                                    System.out.println("Enter:\n - 'a' to buy an apple for $2\n - 'g' to buy grain for $1");
+                                    String choice = scanner.nextLine().trim().toLowerCase();
+
+                                    if (choice.equals("a")) {
+                                        if (bankBalance >= 2) {
+                                            field.plant(y, x, new Apples());
+                                            bankBalance -= 2;
+                                        } else {
+                                            System.out.println("Not enough funds. You lose your turn.");
+                                        }
+
+                                    } else if (choice.equals("g")) {
+                                        if (bankBalance >= 1) {
+                                            field.plant(y, x, new Grain());
+                                            bankBalance -= 1;
+                                        } else {
+                                            System.out.println("Not enough funds. You lose your turn.");
+                                        }
+
+                                    } else {
+                                        System.out.println("Invalid crop choice. Turn forfeited.");
+                                    }
+                                }
+                            }
+                        }
+
+                    } else {
+                        System.out.println("Unknown or incomplete command.");
+                    }
+
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input format. Please enter numbers where expected.");
+                } catch (Exception e) {
+                    System.out.println("Something went wrong: " + e.getMessage());
                 }
             }
 
@@ -55,6 +129,7 @@ public class Farm {
         }
 
         System.out.println("Game over!");
+        scanner.close();
 	}
 	
 }
