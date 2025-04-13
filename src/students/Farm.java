@@ -130,8 +130,8 @@ public class Farm {
             /*
              * === Custom Feature: Weather System ===
              * On each turn, the WeatherManager determines if a weather event occurs.
-             * - Drought (10%): crops do not age (tick is skipped)
-             * - Flood (10%): all Apples and Grain are wiped out and replaced with UntilledSoil
+             * - Drought (5%): crops do not age (tick is skipped)
+             * - Flood (5%): all Apples and Grain are wiped out and replaced with UntilledSoil
              * This feature introduces environmental randomness and challenges the player to plan ahead.
              */
             int weatherEvent = weather.getWeatherEvent();
